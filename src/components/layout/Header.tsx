@@ -56,9 +56,9 @@ export const Header: React.FC = () => {
   ];
 
   return (
-    <header className="h-16 shrink-0 bg-white border-b border-slate-200 px-6 flex items-center justify-between sticky top-0 z-30">
+    <header className="min-h-16 h-auto shrink-0 bg-white border-b border-slate-200 px-3 py-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 sticky top-0 z-30 sm:h-16 sm:flex-nowrap sm:px-6 sm:py-0">
       {/* Title & Tab Info */}
-      <div className="flex min-w-0 flex-col">
+      <div className="flex min-w-0 w-full flex-col sm:w-auto sm:flex-1">
         <h1 className="truncate text-lg font-bold leading-tight text-slate-800">
           {currentTabInfo.title}
         </h1>
@@ -68,10 +68,10 @@ export const Header: React.FC = () => {
       </div>
 
       {/* Middle & Right Controls */}
-      <div className="flex items-center gap-3">
+      <div className="flex w-full min-w-0 flex-wrap items-center justify-between gap-2 sm:w-auto sm:flex-nowrap sm:gap-3">
         {/* Search Bar (Admin & Lead) */}
         {userRole !== 'EMPLOYEE' && (
-          <div className="relative w-56 hidden md:block">
+          <div className="relative hidden w-40 md:block lg:w-56">
             <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
               type="text"
@@ -84,15 +84,15 @@ export const Header: React.FC = () => {
         )}
 
         {/* Month Selector for Rostering */}
-        <div className="flex items-center bg-slate-100 rounded-lg p-1 border border-slate-200 text-xs">
-          <div className="flex items-center gap-1 px-2 text-slate-600 font-medium">
+        <div className="order-2 flex w-full items-center justify-between bg-slate-100 rounded-lg p-1 border border-slate-200 text-xs sm:order-none sm:w-auto">
+          <div className="hidden items-center gap-1 px-2 text-slate-600 font-medium sm:flex">
             <Calendar className="w-3.5 h-3.5 text-indigo-600" />
             <span className="hidden sm:inline">Month:</span>
           </div>
           <select
             value={selectedMonth}
             onChange={(e) => setSelectedMonth(Number(e.target.value))}
-            className="bg-white rounded px-2 py-1 text-slate-800 font-semibold border-none text-xs focus:ring-1 focus:ring-indigo-500 cursor-pointer"
+            className="w-24 bg-white rounded px-2 py-1 text-slate-800 font-semibold border-none text-xs focus:ring-1 focus:ring-indigo-500 cursor-pointer sm:w-auto"
           >
             {monthNames.map((name, idx) => (
               <option key={name} value={idx + 1}>
@@ -103,59 +103,63 @@ export const Header: React.FC = () => {
           <select
             value={selectedYear}
             onChange={(e) => setSelectedYear(Number(e.target.value))}
-            className="bg-white rounded px-2 py-1 text-slate-800 font-semibold border-none text-xs ml-1 focus:ring-1 focus:ring-indigo-500 cursor-pointer"
+            className="ml-1 w-16 bg-white rounded px-2 py-1 text-slate-800 font-semibold border-none text-xs focus:ring-1 focus:ring-indigo-500 cursor-pointer sm:w-auto"
           >
             <option value={2026}>2026</option>
             <option value={2027}>2027</option>
           </select>
         </div>
 
-        {/* Conflicts Alert Button (Admin only) */}
-        {userRole === 'ADMIN' && (
-          <button
-            onClick={() => setActiveTab('conflicts')}
-            title="Validation & Conflict Center"
-            className="relative p-2 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors"
-          >
-            <Bell className="w-5 h-5" />
-            {unresolvedAlerts.length > 0 && (
-              <span className="absolute top-1 right-1 flex h-4 w-4">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-4 w-4 bg-rose-600 text-[10px] font-bold text-white items-center justify-center">
-                  {unresolvedAlerts.length}
+        <div className="order-1 ml-auto flex items-center gap-1 sm:order-none sm:ml-0 sm:gap-3">
+          {/* Conflicts Alert Button (Admin only) */}
+          {userRole === 'ADMIN' && (
+            <button
+              onClick={() => setActiveTab('conflicts')}
+              title="Validation & Conflict Center"
+              aria-label="Validation and conflict center"
+              className="relative p-2 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors"
+            >
+              <Bell className="w-5 h-5" />
+              {unresolvedAlerts.length > 0 && (
+                <span className="absolute top-1 right-1 flex h-4 w-4">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-4 w-4 bg-rose-600 text-[10px] font-bold text-white items-center justify-center">
+                    {unresolvedAlerts.length}
+                  </span>
                 </span>
-              </span>
-            )}
-          </button>
-        )}
+              )}
+            </button>
+          )}
 
-        <ThemeToggle />
+          <ThemeToggle />
 
-        {/* User Identity Pill */}
-        <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
-          <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs ring-2 ring-indigo-100">
-            {currentUser?.avatarInitials || 'U'}
-          </div>
-          <div className="hidden lg:block text-left text-xs">
-            <div className="font-semibold text-slate-800 leading-none">
-              {currentUser?.name || 'User'}
+          {/* User Identity Pill */}
+          <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
+            <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs ring-2 ring-indigo-100">
+              {currentUser?.avatarInitials || 'U'}
             </div>
-            <div className="text-[10px] text-slate-400 mt-0.5 font-medium">
-              {currentUser?.role === 'ADMIN'
-                ? 'Admin / Ops Manager'
-                : currentUser?.role === 'POD_LEAD'
-                ? 'Pod Alpha Lead'
-                : 'Employee / Specialist'}
+            <div className="hidden lg:block text-left text-xs">
+              <div className="font-semibold text-slate-800 leading-none">
+                {currentUser?.name || 'User'}
+              </div>
+              <div className="text-[10px] text-slate-400 mt-0.5 font-medium">
+                {currentUser?.role === 'ADMIN'
+                  ? 'Admin / Ops Manager'
+                  : currentUser?.role === 'POD_LEAD'
+                  ? 'Pod Alpha Lead'
+                  : 'Employee / Specialist'}
+              </div>
             </div>
-          </div>
 
-          <button
-            onClick={logout}
-            title="Sign Out"
-            className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors ml-1"
-          >
-            <LogOut className="w-4 h-4" />
-          </button>
+            <button
+              onClick={logout}
+              title="Sign Out"
+              aria-label="Sign out"
+              className="p-1.5 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-colors ml-1"
+            >
+              <LogOut className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </header>

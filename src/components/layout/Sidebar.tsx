@@ -167,7 +167,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ collapsed, onToggle }) => {
   const roleBadge = getRoleBadge();
 
   return (
-    <aside className={`${collapsed ? 'w-20' : 'w-72'} flex flex-shrink-0 flex-col overflow-hidden border-r border-slate-800 bg-slate-900 text-slate-200 transition-[width] duration-300 ease-in-out select-none`}>
+    <aside className={`${collapsed ? 'w-14 sm:w-20' : 'w-72 max-sm:fixed max-sm:inset-y-0 max-sm:left-0 max-sm:z-50 max-sm:shadow-2xl'} flex flex-shrink-0 flex-col overflow-hidden border-r border-slate-800 bg-slate-900 text-slate-200 transition-[width] duration-300 ease-in-out select-none`}>
       {/* Brand Header */}
       <button
         type="button"

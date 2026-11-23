@@ -113,18 +113,26 @@ export const MainLayout: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-slate-100">
+    <div className="flex h-screen w-screen overflow-hidden bg-slate-100 supports-[height:100dvh]:h-[100dvh]">
       {/* Dynamic Role-Based Sidebar */}
       <Sidebar
         collapsed={sidebarCollapsed}
         onToggle={() => setSidebarCollapsed((collapsed) => !collapsed)}
       />
+      {!sidebarCollapsed && (
+        <button
+          type="button"
+          aria-label="Close navigation"
+          onClick={() => setSidebarCollapsed(true)}
+          className="fixed inset-0 z-40 bg-slate-950/40 sm:hidden"
+        />
+      )}
 
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <Header />
 
-        <main className="flex-1 overflow-y-auto p-6 bg-slate-50">
+        <main className="flex-1 overflow-y-auto p-3 bg-slate-50 sm:p-4 lg:p-6">
           <div className="max-w-7xl mx-auto space-y-6">
             {renderActiveView()}
           </div>

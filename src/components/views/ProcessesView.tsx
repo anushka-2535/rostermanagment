@@ -171,10 +171,10 @@ export const ProcessesView: React.FC = () => {
             >
               <div>
                 {/* Header */}
-                <div className="flex items-start justify-between">
-                  <div className="space-y-1">
-                    <div className="flex items-center gap-2">
-                      <span className="font-bold text-slate-900 text-sm">{proc.name}</span>
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+                  <div className="min-w-0 space-y-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="break-words font-bold text-slate-900 text-sm">{proc.name}</span>
                       <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100">
                         {proc.type}
                       </span>
@@ -283,7 +283,7 @@ export const ProcessesView: React.FC = () => {
                 </datalist>
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 <div>
                   <label className="block font-semibold text-slate-700 mb-1">Brand</label>
                   <select
@@ -332,7 +332,7 @@ export const ProcessesView: React.FC = () => {
                 <label className="block font-semibold text-slate-700 mb-1">
                   Mandatory Headcount Per Shift
                 </label>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
                   <div>
                     <span className="text-[10px] text-slate-500 block mb-0.5">Morning</span>
                     <input

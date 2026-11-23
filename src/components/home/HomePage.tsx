@@ -39,7 +39,7 @@ const FEATURES = [
 export const HomePage: React.FC<HomePageProps> = ({ onSignIn }) => (
   <div className="min-h-screen overflow-hidden bg-[#f7f8fc] text-slate-900 dark:bg-slate-950 dark:text-slate-100">
     <header className="sticky top-0 z-30 border-b border-slate-200/70 bg-white/90 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/90">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-3 py-3 sm:px-8 sm:py-4 lg:px-12">
       <a href="#" className="flex items-center gap-2.5" aria-label="RosterFlow home">
         <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 text-white shadow-lg shadow-indigo-600/20">
           <CalendarDays className="h-5 w-5" />
@@ -58,9 +58,9 @@ export const HomePage: React.FC<HomePageProps> = ({ onSignIn }) => (
         <button
           type="button"
           onClick={onSignIn}
-          className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200 dark:bg-indigo-600 dark:hover:bg-indigo-500"
+          className="inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-3 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-200 dark:bg-indigo-600 dark:hover:bg-indigo-500 sm:gap-2 sm:px-4"
         >
-          Sign in <ArrowRight className="h-4 w-4" />
+          Sign in <ArrowRight className="hidden h-4 w-4 sm:block" />
         </button>
       </div>
       </div>

@@ -64,7 +64,7 @@ export const DashboardView: React.FC = () => {
       {/* 1. Header Banner & Quick Actions */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <h1 className="text-xl font-bold text-slate-900">Operations Dashboard</h1>
             <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800">
               Roster: {rosterStatus}
@@ -109,8 +109,8 @@ export const DashboardView: React.FC = () => {
 
       {/* Critical Conflict Banner (if any) */}
       {criticalConflicts.length > 0 && (
-        <div className="bg-rose-50 border border-rose-200 rounded-2xl p-4 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+        <div className="bg-rose-50 border border-rose-200 rounded-2xl p-4 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="flex min-w-0 items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-rose-600 text-white flex items-center justify-center flex-shrink-0">
               <ShieldAlert className="w-5 h-5" />
             </div>

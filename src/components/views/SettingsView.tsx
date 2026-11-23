@@ -195,7 +195,7 @@ export const SettingsView: React.FC = () => {
           </div>
 
           <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-3 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-between">
+            <div className="p-3 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-between gap-3">
               <div>
                 <span className="font-semibold text-slate-800 block">
                   Night Shift Female Transport Safety Policy
@@ -217,8 +217,8 @@ export const SettingsView: React.FC = () => {
               />
             </div>
 
-            <div className="p-3 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-between">
-              <div>
+            <div className="p-3 rounded-lg border border-slate-200 bg-slate-50 flex flex-col items-stretch justify-between gap-3 sm:flex-row sm:items-center">
+              <div className="min-w-0">
                 <span className="font-semibold text-slate-800 block">
                   Default Weekly Off Allocation
                 </span>
@@ -234,7 +234,7 @@ export const SettingsView: React.FC = () => {
                     defaultWeeklyOffModel: e.target.value as any,
                   })
                 }
-                className="px-2 py-1 border rounded bg-white font-semibold text-slate-800"
+                className="w-full max-w-full px-2 py-1 border rounded bg-white font-semibold text-slate-800 sm:w-auto"
               >
                 <option value="FIXED">Fixed Designated Day</option>
                 <option value="ROTATIONAL">Balanced Rotational</option>
